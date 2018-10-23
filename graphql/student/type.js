@@ -5,6 +5,7 @@ const {
   GraphQLString,
 } = require('graphql');
 const faker = require('faker');
+const { AppError } = require('../../errors/app-error');
 
 /*
  *  This is how we create graphql objects that are essentially
@@ -58,7 +59,9 @@ const type = new GraphQLObjectType({
     imageURL: {
       type: new GraphQLNonNull(GraphQLString),
       resolve: (source, args) => {
-        return faker.image.imageUrl();
+        // You can now use AppError to throw some arbitrary error
+        // inside of your graphql resolvers
+        throw new AppError({ code: 'student:image_url_not_found' });
       },
     },
     bestFriend: {
