@@ -1,4 +1,5 @@
 const { GraphQLObjectType } = require('graphql');
+const { mutation: StudentMutation } = require('../student/mutation');
 
 /*
  * The main entry point to all the MUTATIONS in the graphql system
@@ -12,5 +13,7 @@ const { GraphQLObjectType } = require('graphql');
 module.exports.mutation = new GraphQLObjectType({
   name: 'RootMutation',
   description: 'The root mutation',
-  fields: () => {},
+  fields: {
+    ...StudentMutation,
+  },
 });
