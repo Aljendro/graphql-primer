@@ -3,6 +3,7 @@
 const { graphqlLambda, graphiqlLambda } = require('apollo-server-lambda');
 const { schema } = require('./graphql/schema');
 const depthLimit = require('graphql-depth-limit');
+const { studentDataLoader } = require('./dataloader/student-dataloader');
 
 /*
  * NOTE: this graphql handler comes from "apollo-server-lambda": "^1.4.0"
@@ -27,8 +28,16 @@ exports.graphqlHandler = (event, context, callback) => {
     output.headers['Access-Control-Allow-Origin'] = '*';
     callback(error, output);
   }
+
+  const ctx = {
+    dataloaders: {
+      studentDataLoader,
+    }
+  }
+
   graphqlLambda({
     schema,
+    context: ctx,
     validationRules: [depthLimit(5)],
     tracing: true,
   })(event, context, callbackFilter);

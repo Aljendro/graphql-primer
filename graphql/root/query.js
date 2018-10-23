@@ -1,6 +1,7 @@
 const { GraphQLObjectType } = require('graphql');
 const { query: StudentQuery } = require('../student/query');
 const { query: AdministrationQuery } = require('../administration/query');
+const { query: IrregularityQuery } = require('../irregularities/query');
 
 /*
  * The main entry point to all the QUERIES in the graphql system
@@ -16,5 +17,6 @@ module.exports.query = new GraphQLObjectType({
   fields: () => ({
     ...StudentQuery,
     ...AdministrationQuery,
+    ...IrregularityQuery,
   }),
 });
