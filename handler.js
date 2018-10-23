@@ -2,6 +2,7 @@
 
 const { graphqlLambda, graphiqlLambda } = require('apollo-server-lambda');
 const { schema } = require('./graphql/schema');
+const depthLimit = require('graphql-depth-limit');
 
 /*
  * NOTE: this graphql handler comes from "apollo-server-lambda": "^1.4.0"
@@ -28,6 +29,7 @@ exports.graphqlHandler = (event, context, callback) => {
   }
   graphqlLambda({
     schema,
+    validationRules: [depthLimit(5)],
     tracing: true,
   })(event, context, callbackFilter);
 };

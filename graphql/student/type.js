@@ -13,7 +13,7 @@ const faker = require('faker');
  *  We can connect them arbitrarily just signifying the return 
  *  type with "type" to be another graphql type.
  */
-module.exports.type = new GraphQLObjectType({
+const type = new GraphQLObjectType({
   name: 'StudentType',
   description: 'A student type.',
   fields: () => ({
@@ -61,5 +61,16 @@ module.exports.type = new GraphQLObjectType({
         return faker.image.imageUrl();
       },
     },
+    bestFriend: {
+      type: new GraphQLNonNull(type),
+      resolve: (source, args) => {
+        return {
+          id: faker.random.uuid(),
+          firstName: faker.name.firstName(),
+        }
+      }
+    }
   }),
 });
+
+module.exports.type = type;
