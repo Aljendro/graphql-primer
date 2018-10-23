@@ -46,6 +46,6 @@ exports.graphqlHandler = (event, context, callback) => {
 exports.graphiqlHandler = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   graphiqlLambda({
-    endpointURL: '/graphql',
+    endpointURL: process.env.STAGE === 'dev' ? '/dev/graphql' : '/graphql',
   })(event, context, callback);
 };
