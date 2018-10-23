@@ -7,15 +7,10 @@ module.exports.type = new GraphQLObjectType({
   fields: () => ({
     id: {
       type: new GraphQLNonNull(GraphQLID),
-      resolve: (source, args) => {
-        return faker.random.uuid();
-      },
     },
     firstName: {
       type: new GraphQLNonNull(GraphQLString),
-      resolve: (source, args) => {
-        return faker.name.firstName();
-      },
+      resolve: (source, args) => source.firstName,
     },
     lastName: {
       type: new GraphQLNonNull(GraphQLString),

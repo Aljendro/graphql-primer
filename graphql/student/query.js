@@ -1,5 +1,6 @@
 const { GraphQLNonNull, GraphQLID } = require('graphql');
 const { type: StudentType } = require('./type');
+const faker = require('faker');
 
 module.exports.query = {
   student: {
@@ -7,11 +8,14 @@ module.exports.query = {
     description: 'Returns a student by ID',
     args: {
       id: {
-        type: new GraphQLNonNull(GraphQLID)
-      }
+        type: new GraphQLNonNull(GraphQLID),
+      },
     },
     resolve: (source, args) => {
-      return Promise.resolve({});
-    }
+      return Promise.resolve({
+        id: faker.random.uuid(),
+        firstName: faker.name.firstName(),
+      });
+    },
   },
 };
