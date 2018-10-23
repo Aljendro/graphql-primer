@@ -1,0 +1,23 @@
+{
+  "name": "graphql-primer",
+  "version": "1.0.0",
+  "description": "A primer for running graphql on aws lambda",
+  "main": "handler.js",
+  "scripts": {
+    "start": "serverless offline --stage local"
+  },
+  "keywords": [
+    "graphql",
+    "lambda",
+    "aws"
+  ],
+  "author": "Alejandro Alvarado",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-offline": "^3.28.1"
+  },
+  "dependencies": {
+    "apollo-server-lambda": "^1.4.0",
+    "graphql": "^0.13.2"
+  }
+}
