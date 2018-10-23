@@ -1,4 +1,5 @@
 const { GraphQLObjectType } = require('graphql');
+const { query: StudentQuery } = require('../student/query');
 
 /*
  * The main entry point to all the QUERIES in the graphql system
@@ -11,5 +12,7 @@ const { GraphQLObjectType } = require('graphql');
 module.exports.query = new GraphQLObjectType({
   name: 'RootQuery',
   description: 'The root query',
-  fields: () => {},
+  fields: () => ({
+    ...StudentQuery,
+  }),
 });

@@ -9,5 +9,5 @@ const { mutation } = require('./root/mutation');
  */
 module.exports.schema = new GraphQLSchema({
   query, // The main entry point to all the QUERIES in the graphql system
-  mutation, // The main entry point to all the MUTATIONS in the graphql system
+  // mutation, // The main entry point to all the MUTATIONS in the graphql system
 });
