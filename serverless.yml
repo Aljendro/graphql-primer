@@ -61,6 +61,7 @@ provider:
 
 functions:
   graphql:
+    name: graphql-primer
     handler: handler.graphqlHandler
     events:
       - http:
@@ -68,6 +69,7 @@ functions:
           method: post
           cors: true
   graphiql:
+    name: graphiql-primer
     handler: handler.graphiqlHandler
     events:
       - http:
