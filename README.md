@@ -34,6 +34,11 @@ List the "chapters"
 git tag --list
 ```
 
+Look at the code for a "chapter"
+```
+git checkout <tag>
+```
+
 Compare the difference between "chapters". This gives you the sense of
 what has changed between chapters.
 ```
